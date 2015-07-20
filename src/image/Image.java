@@ -21,12 +21,17 @@ import javax.imageio.ImageIO;
 public class Image {
     private BufferedImage imageActual;
     
-    public void openImage() throws FileNotFoundException, IOException{
+    public void openImage(String value) throws FileNotFoundException, IOException{
         BufferedImage bmp=null;
-        File f = new File("set1/A.JPG");
+        value = value+".JPG";
+        File f = new File("set1/"+value);
         bmp = ImageIO.read(f);
         imageActual = bmp;        
         
+    }
+    
+    public ArrayList getArrayList(){
+    
         Color colorAux;
         ArrayList<Color> colorsPixel = new ArrayList();
                 
@@ -39,15 +44,47 @@ public class Image {
                 colorsPixel.add(colorAux);
             }
         }
-        //Retornamos la imagen
+        
+        ArrayList<Boolean> colors = new ArrayList<Boolean>();
+        
         
         for (Color i: colorsPixel) {
-            System.out.println(i.getRed() +" - " + i.getGreen() +" "+ i.getBlue());
+            if (evaluateCode(i)){
+                colors.add(true);
+            }else{
+                colors.add(false);
+            }
+        }
+        return colors;
+    }
+    
+    private boolean evaluateCode(Color pix){
+        if ((pix.getRed() - 10 > 237) && (pix.getGreen() - 10 > 237) && (pix.getBlue() - 10 > 237)){
+            return false;
+        }else{
+            return true;
         }
     }
     
-    public static void main(String[] args) throws IOException {
-        Image i = new Image();
-        i.openImage();
+    public boolean[] getImageArray(String value) throws IOException{
+        this.openImage(value);
+        ArrayList<Boolean> patron = new ArrayList<Boolean>();
+        patron = this.getArrayList();
+        
+        boolean[] color = new boolean[20000];
+        
+        for (int i = 0; i < patron.size(); i++) {
+            color[i] = patron.get(i);
+        }
+        return color;
     }
+    
+    /*
+    public static void main(String[] args) throws IOException {
+        boolean[] color = new boolean[20000];
+        Image img = new Image();
+        color = img.getImageArray("A");
+           
+    }
+    */
 }
