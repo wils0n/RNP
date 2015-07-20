@@ -16,7 +16,7 @@ import javax.imageio.ImageIO;
 
 /**
  *
- * @author pytux
+ * @author wil_jm
  */
 public class Image {
     private BufferedImage imageActual;
@@ -78,13 +78,4 @@ public class Image {
         }
         return color;
     }
-    
-    /*
-    public static void main(String[] args) throws IOException {
-        boolean[] color = new boolean[20000];
-        Image img = new Image();
-        color = img.getImageArray("A");
-           
-    }
-    */
 }

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author pytux
+ * @author wil_jm
  */
 public class Proyecto {
     
