@@ -23,7 +23,7 @@ public class Image {
     
     public void openImage(String value) throws FileNotFoundException, IOException{
         BufferedImage bmp=null;
-        value = value+".JPG";
+        value = value+".png";
         File f = new File("set1/"+value);
         bmp = ImageIO.read(f);
         imageActual = bmp;        
@@ -59,9 +59,15 @@ public class Image {
     }
     
     private boolean evaluateCode(Color pix){
+        //System.out.println(pix.getRed());
+        //System.out.println(pix.getGreen());
+        //System.out.println(pix.getBlue());
+        //System.out.println("----------");
         if ((pix.getRed() - 10 > 237) && (pix.getGreen() - 10 > 237) && (pix.getBlue() - 10 > 237)){
+            //System.out.println("false");
             return false;
         }else{
+            //System.out.println("true");
             return true;
         }
     }
@@ -71,7 +77,7 @@ public class Image {
         ArrayList<Boolean> patron = new ArrayList<Boolean>();
         patron = this.getArrayList();
         
-        boolean[] color = new boolean[20000];
+        boolean[] color = new boolean[patron.size()];
         
         for (int i = 0; i < patron.size(); i++) {
             color[i] = patron.get(i);
