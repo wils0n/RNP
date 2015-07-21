@@ -8,10 +8,18 @@ import hopfield.RNAHopfield;
 import image.Image;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
- * @author wil_jm
+ * Integrantes:
+ * -----------
+ *      Wilson Julca Mejia
+ *      Steve Tovar Cabrera
+ *      Aaron Rodriguez
+ *      Antonio Vargar Vergaray
  */
 public class Proyecto {
     
@@ -36,54 +44,59 @@ public class Proyecto {
         final RNAHopfield red = new RNAHopfield(2750);
         Image image = new Image();
         
+        Map<String, String> map = new HashMap<String, String>();
+        String aux;
+        
         final boolean[] patronA = image.getImageArray("A");
+        map.put(Arrays.toString(patronA), "A");
         final boolean[] patronB = image.getImageArray("B");
+        map.put(Arrays.toString(patronB), "B");
         final boolean[] patronC = image.getImageArray("C");
+        map.put(Arrays.toString(patronC), "C");
         final boolean[] patronD = image.getImageArray("D");
+        map.put(Arrays.toString(patronD), "D");
         final boolean[] patronE = image.getImageArray("E");
+        map.put(Arrays.toString(patronE), "E");
         final boolean[] patronF = image.getImageArray("F");
+        map.put(Arrays.toString(patronF), "F");
         final boolean[] patronG = image.getImageArray("G");
+        map.put(Arrays.toString(patronG), "G");
         final boolean[] patronH = image.getImageArray("H");
+        map.put(Arrays.toString(patronH), "H");
         final boolean[] patronI = image.getImageArray("I");
+        map.put(Arrays.toString(patronI), "I");
         final boolean[] patronJ = image.getImageArray("J");
+        map.put(Arrays.toString(patronJ), "J");
         final boolean[] patronAtest = image.getImageArray("A_test");
         final boolean[] patronItest = image.getImageArray("I_test");
         
         
         System.out.println("Entrenamiento de la Red de Hopfield");
         red.entrenar(patronA);
-        //red.entrenar(patronB);
-        //red.entrenar(patronC);
-        //red.entrenar(patronD);
-        //red.entrenar(patronE);
-        //red.entrenar(patronF);
-        //red.entrenar(patronG);
-        //red.entrenar(patronH);
-        //red.entrenar(patronI);
-        //red.entrenar(patronJ);
-        //red.entrenar(patronA);
-        //presentar patron1 y ver si este se reconoce
-        boolean[] resultado1;
-        boolean[] resultado2;
-        resultado1 = red.presentar(patronA);
-        //System.out.println("Presentando patron: \n" +formatearBoolean(patron1)+" y obteniendo \n" + formatearBoolean(resultado));
+        red.entrenar(patronB);
+        red.entrenar(patronC);
+        red.entrenar(patronD);
+        red.entrenar(patronE);
+        red.entrenar(patronG);
+        red.entrenar(patronA);
+        red.entrenar(patronH);
+        red.entrenar(patronI);
+        red.entrenar(patronJ);
+        red.entrenar(patronA);
+        red.entrenar(patronH);
+        red.entrenar(patronI);
         
-        resultado2 = red.presentar(patronAtest);
-        System.out.println("Presentando patron: \n" +formatearBoolean(patronAtest)+" y obteniendo \n" + formatearBoolean(resultado2));
+        boolean[] resultado;
+        System.out.println("=====");
         
-        boolean band=true;
-        for (int i = 0; i < resultado2.length; i++) {
-            if(resultado1[i]!=resultado2[i]){
-                band=false;
-                break;
-            }
-        }
+        resultado = red.presentar(patronAtest);
+        System.out.println("Test #1 se parece a la letra: "+ map.get(Arrays.toString(resultado)));
         
-        if (band){
-            System.out.println("iguales");
-        }else{
-            System.out.println("diferentes");
-        }
+        resultado = red.presentar(patronItest);
+        System.out.println("Test #2 se parece a la letra: "+ map.get(Arrays.toString(resultado)));
+        
+        
+        
     }
     
 }
