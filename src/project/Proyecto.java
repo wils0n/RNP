@@ -7,7 +7,6 @@ package project;
 import hopfield.RNAHopfield;
 import image.Image;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,7 +17,7 @@ import java.util.Map;
  * -----------
  *      Wilson Julca Mejia
  *      Steve Tovar Cabrera
- *      Aaron Rodriguez
+ *      Aaron Rodriguez Castillo
  *      Antonio Vargar Vergaray
  */
 public class Proyecto {
@@ -87,7 +86,7 @@ public class Proyecto {
         red.entrenar(patronI);
         
         boolean[] resultado;
-        System.out.println("=====");
+        System.out.println("=====================================");
         
         resultado = red.presentar(patronAtest);
         System.out.println("Test #1 se parece a la letra: "+ map.get(Arrays.toString(resultado)));
@@ -95,8 +94,8 @@ public class Proyecto {
         resultado = red.presentar(patronItest);
         System.out.println("Test #2 se parece a la letra: "+ map.get(Arrays.toString(resultado)));
         
-        
-        
+        System.out.println("=====================================");
+          
     }
     
 }
